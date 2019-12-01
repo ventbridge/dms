@@ -30,6 +30,21 @@
       integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
       crossorigin="anonymous"
     />
+
+
+    <script>
+        function validateForm() {
+          var a = document.forms["myForm"]["name"].value;
+          var b = document.forms["myForm"]["subject"].value;
+          var c = document.forms["myForm"]["mail"].value;
+          var d = document.forms["myForm"]["number"].value;
+          var e = document.forms["myForm"]["message"].value;
+          if (a == "" || b == "" || c == "" || d == "" || e == "") {
+            alert("Aizpildi visus laukus!");
+            return false;
+          }
+        }
+    </script>
   </head>
 
   <body id="top">
@@ -220,41 +235,44 @@
             </div>
           </div>
           <br />
-          <form
-            action="https://www.elformo.com/forms/1cf997c0-c5a5-4e17-b5a3-8ecd92185f54"
-            method="post"
-            accept-charset="UTF-8"
-          >
+          <form name="myForm" action="email.php" onsubmit="return validateForm()" method="POST">
             <div class="form-group">
-              <label for="exampleFormControlInput1">Vārds un uzvārds</label>
-              <input type="text" class="form-control" id="nameLastname" />
+              <label for="name">Vārds un uzvārds</label>
+              <input type="text" name="name" class="form-control" id="name" />
             </div>
             <div class="form-group">
-              <label for="exampleFormControlInput1">E-pasta adrese</label>
+              <label for="subject">Temats</label>
+              <input type="text" name="subject" class="form-control" id="subject" />
+            </div>
+            <div class="form-group">
+              <label for="mail">E-pasta adrese</label>
               <input
                 type="email"
+                name="mail"
                 class="form-control"
-                id="exampleFormControlInput1"
+                id="mail"
               />
             </div>
             <div class="form-group">
-              <label for="exampleFormControlInput1">Tālrunis</label>
+              <label for="number">Tālrunis</label>
               <input
-                type="numbers"
+                type="number"
+                name="number"
                 class="form-control"
-                id="exampleFormControlInput1"
+                id="number"
               />
             </div>
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">Teksts</label>
+              <label for="message">Teksts</label>
               <textarea
+                name="message"
                 class="form-control"
                 id="exampleFormControlTextarea1"
                 rows="3"
               ></textarea>
             </div>
             <br />
-            <button type="submit" class="btn btn-info mb-2">
+            <button type="submit" name="submit" class="btn btn-info mb-2" id="submit">
               Sūtīt ziņu
             </button>
           </form>
